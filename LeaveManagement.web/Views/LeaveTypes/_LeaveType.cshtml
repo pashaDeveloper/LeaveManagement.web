@@ -1,0 +1,74 @@
+﻿
+@using LeaveManagement.web.ViewModels
+@model IEnumerable<LeaveTypeVM>
+@{
+    int rowRandom = 1;
+}
+
+<table class="table table-hover" id="example">
+    <thead class="thead-dark">
+        <tr class=" text-center">
+            <th >
+                ردیف
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DefaultDays)
+            </th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody >
+        @foreach (var item in Model)
+        {
+                <tr class="text-center">
+                    <td>
+                    @(rowRandom++)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.DefaultDays)
+                    </td>
+                    <td>
+                            <a class="btn btn-info btn-sm" onclick="showInPopup('@Url.Action("CreateOrEdit","LeaveTypes",new{id=item.Id},Context.Request.Scheme)','ویرایش  مرخصی @item.Name')" >
+                         <i class="fas fa-pencil-alt"></i>
+                            ویرایش
+                        </a> |
+                        <form asp-action="Delete" class="d-inline" asp-route-id="@item.Id" asp-route-name="@item.Name" onclick="return jQueryAjaxDelete(this)" >
+                        <a asp-action="Delete" class="btn btn-danger btn-sm" asp-route-id="@item.Id">
+                            حذف
+                            <i class="fas fa-trash"></i>
+                        </a>
+                        </form>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>
+<scipts>  
+                   <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                   <script src="~/lib/datatables/datatables.min.js"></script>
+           <script>
+               $(document).ready(function () {
+                       $('.table').DataTable({
+                       "language": {
+                           "search": " جستجو : ",
+                           "infoEmpty": "555 0 to 0 of 0 444",
+                           "sLengthMenu": "نمایش _MENU_ ایتم در هر صفحه",
+                           "sInfo": "نمایش _START_ تا _END_ از _TOTAL_ آیتم در هر صفحه",
+
+                           'paginate': {
+                               'previous': 'قبلی',
+                               'next': 'بعدی'
+                           }
+                       }
+                   });
+               });
+
+           </script>
+
+</scipts>

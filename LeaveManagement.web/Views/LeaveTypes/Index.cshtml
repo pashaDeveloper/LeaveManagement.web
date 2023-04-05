@@ -1,0 +1,15 @@
+﻿@using LeaveManagement.web.ViewModels
+@model IEnumerable<LeaveTypeVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    <a class="btn btn-success"  onclick="showInPopup('@Url.Action("CreateOrEdit","LeaveTypes",null,Context.Request.Scheme)','ثبت مرخصی جدید')">ثبت مرخصی جدید &nbsp;<i class="bi bi-clipboard-plus"></i></a>
+</p>
+<div id="view-all" class="col-md-6 offset-3  ">
+    <partial name="_LeaveType" model="Model" />
+</div>

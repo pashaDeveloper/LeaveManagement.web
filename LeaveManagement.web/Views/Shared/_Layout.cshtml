@@ -1,49 +1,99 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - LeaveManagement.web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/LeaveManagement.web.styles.css" asp-append-version="true" />
+    <title>@ViewData["Title"] - مدیریت کارمندان</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/icon/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/modalstyle_top.css" rel="stylesheet" />
+    <link href="~/lib/notie-master/dist/notie.min.css" rel="stylesheet" />
+    <link href="~/lib/datatables/datatables.min.css" rel="stylesheet" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LeaveManagement.web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+<body class="col-md-12">
+    <header >
+
+       <nav class="navbar navbar-expand navbar-dark bg-primary " style="width:1280px;">           
+                 <div class="container-fluid">
+                      <div class="row">                                            
+                            <div class="collapse navbar-collapse" id="navbarColor01">                          
+                                <ul class="navbar-nav me-auto nav-fill w-100" >
+                                      <li class="nav-item">
+                                            <a class="nav-link active text-nowrap" asp-contoller="Home" asp-action="" >صحفه اصلی
+                                              <span class="visually-hidden">(current)</span>
+                                            </a>
+                                      </li >
+                                      <li class="nav-item ">
+                                           <a class="nav-link text-nowrap" href="#">Pricing</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link text-nowrap" href="#">About</a>
+                                      </li>
+                                       <li     class="dropdown">
+                                         <a class="btn btn-secondary dropdown-toggle"  id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                           مدیریت
+                                           <i class="bi bi-gear"></i>
+                                         </a>
+                                         <div class="dropdown-menu "  aria-labelledby="dropdownMenuButton">
+                                           <a class="dropdown-item text-nowrap" style="text-align:right" asp-controller="LeaveTypes" asp-action="index" ><i class="bi bi-receipt"clas></i>&nbsp;مرخصی ها</a>
+
+                                         </div>
+                                       </li>
+                                
+                                      <li class="nav-item mr-200"  style="margin-right:500px;">
+                                        <partial name="_LoginPartial" class="btn btn-secondary" />
+                                      
+                                      </li>
+                                    
+                                       <li  class="nav-item mr-200" >
+                                          <button class="btn btn-secondary" >جستجو</button>
+
+                                       </li>
+                                       <li class="nav-item "  style="margin-right:10px;">
+                                          <input class="form-control " type="search" placeholder="جستجو">
+
+                                       </li>
+
+                                 </ul>
+
+                            </div>
+
+                      </div>
+             </div> 
+           
+
+
+       </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container"  style="padding-top: 70px;">
+        <main role="main" >
             @RenderBody()
         </main>
     </div>
+    <!--Modal Style-->
+    <div class="modal" id="form-modal" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-close">&times;</span>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body">
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - LeaveManagement.web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
         </div>
-    </footer>
+    </div>
+    <!--Modal Style End-->
+    <script src="~/js/modalscript.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/datatables/datatables.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/notie-master/dist/notie.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/fonts/fontawsome/all.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
